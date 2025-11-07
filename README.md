@@ -53,34 +53,6 @@ if (!dbError) {
 }
 ```
 
-## Implementation
-
-Create a `tryCatchUtils.ts` file:
-
-```ts
-export function tryCatch<T>(
-  fn: () => T
-): [T, null] | [null, Error] {
-  try {
-    const result = fn();
-    return [result, null];
-  } catch (error) {
-    return [null, error instanceof Error ? error : new Error(String(error))];
-  }
-}
-
-export async function tryCatchAsync<T>(
-  fn: () => Promise<T>
-): Promise<[T, null] | [null, Error]> {
-  try {
-    const result = await fn();
-    return [result, null];
-  } catch (error) {
-    return [null, error instanceof Error ? error : new Error(String(error))];
-  }
-}
-```
-
 ## Why Use This Pattern?
 
 ### Before (traditional try-catch):
@@ -95,7 +67,7 @@ try {
   console.error("Error:", error);
   return;
 }
-// Use data here (might be undefined!)
+// Use data here - might be undefined
 processData(data);
 ```
 
