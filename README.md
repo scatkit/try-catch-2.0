@@ -1,10 +1,5 @@
 # Go's like error handling in TypeScript (sync/async)
 
-## Installation
-```bash
-npm install go-error-handling
-```
-
 ## Usage
 
 ### Synchronous Operations
@@ -63,12 +58,6 @@ if (!dbError) {
 Create a `tryCatchUtils.ts` file:
 
 ```ts
-/**
- * Executes a synchronous function and returns a tuple of [result, error]
- * @param fn - The function to execute
- * @returns A tuple where the first element is the result (or null on error)
- *          and the second element is the error (or null on success)
- */
 export function tryCatch<T>(
   fn: () => T
 ): [T, null] | [null, Error] {
@@ -80,12 +69,6 @@ export function tryCatch<T>(
   }
 }
 
-/**
- * Executes an asynchronous function and returns a tuple of [result, error]
- * @param fn - The async function to execute
- * @returns A promise that resolves to a tuple where the first element is the result
- *          (or null on error) and the second element is the error (or null on success)
- */
 export async function tryCatchAsync<T>(
   fn: () => Promise<T>
 ): Promise<[T, null] | [null, Error]> {
@@ -125,7 +108,7 @@ const [data, error] = await tryCatchAsync(async () =>
 
 if (!error) {
   console.log("Success:", data);
-  processData(data); // TypeScript knows data is defined here
+  processData(data); // ts knows data is defined here
 } else {
   console.error("Error:", error);
 }
