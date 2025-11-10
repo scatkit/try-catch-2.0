@@ -1,10 +1,9 @@
-# Go's like error handling in TypeScript (sync/async)
+### Go's like error handling in TypeScript
 
-## Usage
-
-### Synchronous Operations
+Synchronous Operations
 
 ```ts
+//index.ts
 import { tryCatch } from './tryCatchUtils';
 
 // JSON parsing
@@ -27,9 +26,10 @@ if (!divError) {
 }
 ```
 
-### Asynchronous Operations
+Asynchronous Operations
 
 ```ts
+//index.ts
 import { tryCatchAsync } from './tryCatchUtils';
 
 // API calls
@@ -52,8 +52,6 @@ if (!dbError) {
   console.log("User:", user);
 }
 ```
-
-## Why Use This Pattern?
 
 ### Before (traditional try-catch):
 
